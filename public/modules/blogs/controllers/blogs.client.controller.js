@@ -5,6 +5,14 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 	function($scope, $stateParams, $location, Authentication, Blogs) {
 		$scope.authentication = Authentication;
 
+		$scope.categories = [
+	       "Auto Deportivo",
+	       "Auto Familiar",
+	       "Camioneta Deportiva",
+	       "Camioneta Familiar",
+	       "Vehiculo Todo Terreno"
+		];
+
 		// Create new Blog
 		$scope.create = function() {
 			console.log(this)
@@ -12,7 +20,7 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			// Create new Blog object
 			var blog = new Blogs ({
 				name: this.name,
-				category: this.category,
+				category: this.categorySelected,
 				content: this.content
 			});
 
