@@ -3,7 +3,13 @@
         <h1>Blogs</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="blog in blogs" data-ng-href="#!/blogs/{{blog._id}}" class="list-group-item">
+        <p>
+            <input placeholder="Buscar" class="form-control" ng-model="search.content">
+            <select ng-model="correctlySelected"
+                ng-options="category as  category.label for category in categories">
+            </select>
+        </p>
+        <a data-ng-repeat="blog in blogs | filter:search | filter:correctlySelected.value " data-ng-href="#!/blogs/{{blog._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="blog.created | date:'medium'"></span>
@@ -12,7 +18,7 @@
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="blog.name"></h4>
             <p data-ng-bind="blog.category"></p>
-            <p class="LEAD" data-ng-bind="blog.content"></p>
+            <p class="LEAD" data-ng-bind="blog.content "></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!blogs.$resolved || blogs.length">
