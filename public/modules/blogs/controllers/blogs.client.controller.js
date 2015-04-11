@@ -7,7 +7,13 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 
 		// Create new Blog
 		$scope.create = function() {
+
+			if (!$scope.validateForm()){
+				return false
+			}
+			console.log($scope.validateForm)
 			console.log(this)
+
 
 			// Create new Blog object
 			var blog = new Blogs ({
@@ -66,5 +72,48 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 				blogId: $stateParams.blogId
 			});
 		};
+
+		// Form validation
+
+		$scope.validateForm = function(){
+			var retorno = true;
+			if (!$scope.name){
+				$scope.empty = true;
+				retorno = false
+			} else {
+				$scope.empty = false;
+			}
+
+			if (!$scope.category){
+				$scope.emptyCategory = true;
+				retorno = false
+			} else {
+				$scope.emptyCategory = false;
+			}
+
+			if (!$scope.content){
+				$scope.emptyContent = true;
+				retorno = false
+			} else {
+				$scope.emptyContent = false;
+			}
+
+			return retorno;
+		}
+
+		$scope.clearAlerts = function(){
+			if ($scope.name){
+				$scope.empty=false;
+			}
+
+			if ($scope.category){
+				$scope.emptyCategory=false;
+			}
+			
+			if ($scope.content){
+				$scope.emptyContent=false;
+			}
+			
+		}
 	}
 ]);
