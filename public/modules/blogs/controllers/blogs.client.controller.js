@@ -5,6 +5,17 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 	function($scope, $stateParams, $location, Authentication, Blogs) {
 		$scope.authentication = Authentication;
 
+		$scope.categories=[
+			{ label: 'Todos',value:''},
+    		{ label: 'AutoDeportivo',value:'AutoDeportivo'},
+    		{ label: 'AutoFamiliar',value:'AutoFamiliar'},
+    		{ label: 'Camionetadeportiva',value:'Camionetadeportiva'},
+    		{ label: 'CamionetaFamiliar',value:'CamionetaFamiliar'},
+    		{ label: 'VehiculoTodoterreno',value:'VehiculoTodoterreno'}
+  		];
+
+  		$scope.correctlySelected = $scope.categories[0];
+
 		// Create new Blog
 		$scope.create = function() {
 			console.log(this)
