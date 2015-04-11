@@ -27,6 +27,12 @@ var BlogSchema = new Schema({
 		required: 'Content is required',
 		trim: true
 	},
+	url: {
+		type: String,
+		default: '',
+		required: 'Image Url is required',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now

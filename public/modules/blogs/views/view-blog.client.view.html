@@ -1,66 +1,36 @@
 <section data-ng-controller="BlogsController" data-ng-init="findOne()">
 	<div class="well">
-
-
-
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="http://i1280.photobucket.com/albums/a489/Hurricane_Fury/bite-the-pillow-i-m-going-in-dry-5f5b160a-sz624x490-animate_zpsb2310cd9.jpg" alt="pillow">
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
-    ...
-  </div>
-</div>
-
-	
-
-
-	<div class="row vertical-align">
-		<div class="col-xs-9">
-			<div class="page-header-">
-				<h1 data-ng-bind="blog.name"></h1>
-			</div>
-		</div>
-		<div class="col-xs-3">
-			<div class="pull-right-" data-ng-show="((authentication.user) && (authentication.user._id == blog.user._id))">
-				<a class="btn btn-primary" href="/#!/blogs/{{blog._id}}/edit">
-					<i class="glyphicon glyphicon-edit"></i>
-				</a>
-				<a class="btn btn-primary" data-ng-click="remove();">
-					<i class="glyphicon glyphicon-trash"></i>
+		<div class="media">
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object blog-img" src="{{blog.url}}">
 				</a>
 			</div>
+			<div class="media-body">
+				<h4 class="media-heading" data-ng-bind="blog.name"></h4>
+				<small>
+					<em class="text-muted">
+						Posted on
+						<span data-ng-bind="blog.created | date:'mediumDate'"></span>
+						by
+						<span data-ng-bind="blog.user.displayName"></span>
+						under categories:
+						<span data-ng-bind="blog.category" class="label label-info"></span>
+					</em>
+				</small>
+			</div>
 		</div>
-	</div>
-
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="blog.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="blog.user.displayName"></span>
-			under categories:
-			<span data-ng-bind="blog.category" class="label label-info"></span>
-		</em>
-	</small>
-
-	<blockquote>
-    <p class="LEAD" data-ng-bind="blog.content"></p>
-    </blockquote>
-
-    <small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="blog.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="blog.user.displayName"></span>
-			under categories:
-			<span data-ng-bind="blog.category" class="label label-info"></span>
-		</em>
-	</small>
-	
+		<br>
+		<blockquote>
+			<p class="LEAD" data-ng-bind="blog.content"></p>
+		</blockquote>
+		<div class="pull-right-" data-ng-show="((authentication.user) && (authentication.user._id == blog.user._id))">
+			<a class="btn btn-primary" href="/#!/blogs/{{blog._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i>
+			</a>
+			<a class="btn btn-primary" data-ng-click="remove();">
+				<i class="glyphicon glyphicon-trash"></i>
+			</a>
+		</div>
     </div>
 </section>
