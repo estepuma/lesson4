@@ -15,7 +15,10 @@
                 <div class="form-group">
                     <label class="control-label" for="name">Category</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="category" class="form-control" placeholder="Category" required>
+                        <!--input type="text" data-ng-model="category" class="form-control" placeholder="Category" required-->                        
+                       <select class="form-control"  ng-model="categorySelected" ng-options="   category for category in categories">
+                             <option value="">-- choose Category --</option>
+                         </select>
                     </div>
                 </div>
 
