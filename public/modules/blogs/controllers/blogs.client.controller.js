@@ -23,8 +23,8 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			// Create new Blog object
 			var blog = new Blogs ({
 				name: this.name,
-				category: this.category,
 				url: this.url,
+				category: this.categorySelected,
 				content: this.content
 			});
 
