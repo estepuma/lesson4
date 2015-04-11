@@ -13,6 +13,7 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			var blog = new Blogs ({
 				name: this.name,
 				category: this.category,
+				url: this.url,
 				content: this.content
 			});
 
