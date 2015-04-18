@@ -5,7 +5,8 @@
     <div class="list-group">
         <p>
             <input placeholder="Buscar" class="form-control" ng-model="search.content">
-            <select ng-model="correctlySelected"
+            <label class="control-label" for="category">Category</label>
+            <select ng-model="correctlySelected" class="form-control" id="category"
                 ng-options="category as  category.label for category in categories">
             </select>
         </p>

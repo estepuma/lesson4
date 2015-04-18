@@ -20,7 +20,7 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 		$scope.create = function() {
 
 			if (!$scope.validateForm()){
-				return false
+				return false;
 			}
 			console.log($scope.validateForm)
 			console.log(this)
