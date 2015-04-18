@@ -22,8 +22,8 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			if (!$scope.validateForm()){
 				return false
 			}
-			console.log($scope.validateForm)
-			console.log(this)
+			console.log($scope.validateForm);
+			console.log(this);
 
 
 			// Create new Blog object
@@ -91,27 +91,30 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 			var retorno = true;
 			if (!$scope.name){
 				$scope.empty = true;
-				retorno = false
+				retorno = false;
 			} else {
 				$scope.empty = false;
 			}
 
+
+			console.log($scope.category);
 			if (!$scope.category){
 				$scope.emptyCategory = true;
-				retorno = false
+				retorno = false;
 			} else {
 				$scope.emptyCategory = false;
 			}
 
+			console.log($scope.content);
 			if (!$scope.content){
 				$scope.emptyContent = true;
-				retorno = false
+				retorno = false;
 			} else {
 				$scope.emptyContent = false;
 			}
 
 			return retorno;
-		}
+		};
 
 		$scope.clearAlerts = function(){
 			if ($scope.name){
@@ -126,6 +129,6 @@ angular.module('blogs').controller('BlogsController', ['$scope', '$stateParams',
 				$scope.emptyContent=false;
 			}
 			
-		}
+		};
 	}
 ]);
