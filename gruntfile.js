@@ -148,7 +148,19 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'karma.conf.js'
 			}
-		}
+		},
+		aws: grunt.file.readJSON("credentials.json"),
+        s3: {
+            options: {
+                accessKeyId: "<%= aws.accessKeyId %>",
+                secretAccessKey: "<%= aws.secretAccessKey %>",
+                bucket: "lesson4"
+            },
+            build: {
+                cwd: "public/dist",
+                src: "**/*"
+            }
+        },
 	});
 
 	// Load NPM tasks
@@ -166,6 +178,10 @@ module.exports = function(grunt) {
 		grunt.config.set('applicationCSSFiles', config.assets.css);
 	});
 
+	// Amazon aws deploy
+	grunt.registerTask('deploy', 's3');
+
+	// Less compilation
 	grunt.registerTask('compileStyles', ['less:development']);
 
 	// Default task(s).
