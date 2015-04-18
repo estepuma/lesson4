@@ -7,13 +7,21 @@ module.exports = function(grunt) {
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
 		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-		clientCSS: ['public/modules/**/*.css'],
+		clientCSS: ['public/styles/*.less', 'public/modules/**/*.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
 	// Project Configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		less: {
+            development: {
+                options: {
+                    paths: []
+                },
+                files: {"public/main.css": "public/styles/main.less"}
+            }
+        },
 		watch: {
 			serverViews: {
 				files: watchFiles.serverViews,
@@ -43,7 +51,8 @@ module.exports = function(grunt) {
 			},
 			clientCSS: {
 				files: watchFiles.clientCSS,
-				tasks: ['csslint'],
+				//tasks: ['csslint', 'less:development'],
+				tasks: ['less:development'],
 				options: {
 					livereload: true
 				}
@@ -157,8 +166,10 @@ module.exports = function(grunt) {
 		grunt.config.set('applicationCSSFiles', config.assets.css);
 	});
 
+	grunt.registerTask('compileStyles', ['less:development']);
+
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'compileStyles','concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
